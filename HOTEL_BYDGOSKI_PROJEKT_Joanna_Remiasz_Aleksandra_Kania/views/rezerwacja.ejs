@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register page</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <style>
+     @import url(https://fonts.googleapis.com/css?family=Lato);
+          html, body {
+              padding: 0;
+              margin: 0;
+              height: 100%;
+          }
+      
+          html {
+              font: 1em/1.5 "Lato", sans-serif;
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+              text-rendering: optimizelegibility;
+          }
+      
+          body {
+              font-size: 1.3em;
+          }
+      
+          .header_main {
+              height: 45%;
+              position: relative;
+              overflow: hidden;
+              background: url(/foto/hotel.jpg) center no-repeat;
+              /* Image Credit: Unsplash.me */
+              background-size: cover;
+          }
+          header .content {
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              z-index: 1;
+          }
+      
+          header hgroup {
+              -webkit-transform: translate(-50%, -50%);
+              -moz-transform: translate(-50%, -50%);
+              -ms-transform: translate(-50%, -50%);
+              -o-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+              display: inline-block;
+              text-align: center;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              color: #fff;
+              border: 5px solid #fff;
+              padding: .5em 3em;
+              background-color: rgba(0, 0, 0, 0.2);
+              z-index: 2;
+          }
+          header .overlay {
+              position: absolute;
+              top: 0;
+              right: 0;
+              left: 0;
+              bottom: 0;
+              background:#333 center no-repeat;
+              background-size: cover;
+              z-index: 0;
+              opacity: 0;  -webkit-filter: blur(4px);
+          }
+          img{
+              margin-right:20px
+          }
+          .site {
+              padding: 5em 0;
+              text-align: left;
+              background-color: #efefef;
+              font-size: .8em;
+              color: #444;
+              position:relative
+          }
+          .site a {
+              color: #666;
+              text-decoration: none;
+          }
+          .site a:hover {
+              color: #222;
+          }
+      
+          .site nav{
+              position:absolute;
+              top:0;
+              left:0;
+              background:#222;
+              width:100%
+          }
+          .site nav a{
+              padding:10px 20px;
+              font-size:1.3em;
+              display:inline-block
+          }
+          .site nav a:hover{
+              background:#333;
+              color:#fff
+          }
+
+      
+      
+       </style>
+
+  
+    </head>
+    <body>
+      
+      <header class="header_main">
+        <div class="content">
+          <hgroup>
+              <h1>HOTEL BYDGOSKI</h1>
+              <i>Joanna Remiasz</i><br>
+              <i>Aleksandra Kania</i><br>
+          </hgroup>
+      </div>
+        <div class="overlay"></div>
+    </header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Strona Rezerwacji</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Rezerwacja</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/">Strona Główna</a>
+                  </li>
+                  <li class="nav-item"><a class="nav-link" href="/opinie">Opinie</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/pokoje">Pokoje</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/restauracja">Restauracja</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/spa">Spa</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/login">Logowanie</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/register">Rejestracja</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>  
+          <section class="site">
+          <div class="container my-5">
+            <div class="card" style="width: 100%;">
+                <div class="card-body">
+                  <h5 class="card-title">Rezerwacja</h5>
+                  <form action="/add_rezerwacja" id="form" method="post">
+                    <div class="mb-3">
+                      <label for="lastname" class="form-label">Imię i Nazwisko</label>
+                      <input type="text" class="form-control" id="lastname" name="lastname" autocapitalize="off" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="email" class="form-label">E-mail</label>
+                      <input type="email" class="form-control" id="email" name="email" autocapitalize="off" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="number" class="form-label">Number</label>
+                      <input type="number" class="form-control" id="number" name="number" autocapitalize="off" required>
+                      <small id="numberError" class="form-text text-danger" style="display: none;">Numer musi składać się z 9 cyfr.</small>
+                    </div>
+                    <div style="display: flex;">
+                      <div class="mb-3" style="margin-right: 5%;">
+                        <label for="date" class="form-label">Od:</label>
+                        <div id="datepicker1"></div>
+                        <input type="text" id="selectedDate1" name="selectedDate1" onchange="calculateTotalCost()" required>
+                      </div>
+                      <div class="mb-3" style="margin-right: 5%;">
+                        <label for="date" class="form-label">Do:</label>
+                        <div id="datepicker2"></div>
+                        <input type="text" id="selectedDate2" name="selectedDate2" onchange="calculateTotalCost()" required>
+                      </div>
+                    </div>
+                  
+                    <div class="mb-3">
+                      <label for="service" class="form-label">Pokój:</label>
+                      <select id="room" name="room" onchange="calculateTotalCost()" required>
+                        <% rooms.forEach(function(room) { %>
+                        <option value="<%= room.idr %>" data-cost="<%= room.cost %>"><%= room.name %></option>
+                        <% }); %>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="spa" class="form-label">Spa:</label>
+                      <select id="spa_name" name="spa_name" onchange="toggleSpaOptions(); calculateTotalCost()" required>
+                        <option value="Nie">Nie</option>
+                        <option value="Tak">Tak</option>
+                      </select>
+                      <select id="spa" name="spa" style="display: none;" onchange="calculateTotalCost()">
+                        <% spa.forEach(function(spa) { %>
+                        <option value="<%= spa.ids %>" data-cost="<%= spa.cost %>"><%= spa.name %></option>
+                        <% }); %>
+                      </select>
+                    </div>
+                    <div>
+                      <label for="totalCost" class="form-label">Koszt:</label>
+                      <input type="text" id="totalCost" name="totalCost" readonly>
+                    </div>
+                    <div>
+                      <label for="days" class="form-label">Liczba dni:</label>
+                      <input type="text" id="days" name="days" readonly>
+                    </div>
+                  
+                    <div class="alert alert-danger" role="alert" id="error" style="display: none;"></div>
+                    <div class="alert alert-success" role="alert" id="success" style="display: none;"></div>
+                  
+                    <button type="submit" class="btn btn-primary">Rezerwuj</button>
+                  </form>
+                  
+                  <div id="message" style="display: none;"></div>
+                  
+                  <script src="public/js/add_rezerwacja.js"></script>
+                  <script>
+                    function validateSelectedDate() {
+                      const selectedDate1 = new Date(document.getElementById("selectedDate1").value);
+                      const selectedDate2 = new Date(document.getElementById("selectedDate2").value);
+                      const currentDate = new Date();
+                  
+                      if (selectedDate1.getTime() < currentDate.getTime()) {
+                        $("#error").text("Wybrana data musi być późniejsza niż dzisiejsza").show();
+                        return false;
+                      } else if (selectedDate2.getTime() < selectedDate1.getTime()) {
+                        $("#error").text("Data 'Do' nie może być wcześniejsza niż data 'Od'").show();
+                        return false;
+                      } else {
+                        $("#error").hide();
+                        return true;
+                      }
+                    }
+                  
+                    function validateForm() {
+                      const isDateValid = validateSelectedDate();
+                      const isNumberValid = validateNumber();
+                      return isDateValid && isNumberValid;
+                    }
+                  
+                    function sprawdzDostepnoscTerminu() {
+                      const odData = document.getElementById("selectedDate1").value;
+                      const doData = document.getElementById("selectedDate2").value;
+                  
+                      if (!validateSelectedDate()) {
+                        return;
+                      }
+                  
+                      $.ajax({
+                        url: "/rezerwacja",
+                        method: "POST",
+                        data: { selectedDate1: odData, selectedDate2: doData },
+                        success: function (response) {
+                          if (response === "Termin zarezerwowany") {
+                            $("#error").text("Termin zarezerwowany").show();
+                          } else {
+                            $("#error").hide();
+                          }
+                        },
+                        error: function (error) {
+                          console.error(error);
+                        },
+                      });
+                    }
+                  
+                    function calculateTotalCost() {
+                      if (!validateSelectedDate()) {
+                        return;
+                      }
+                  
+                      var roomSelect = document.getElementById("room");
+                      var spaSelect = document.getElementById("spa_name");
+                      var idSelect = document.getElementById("spa");
+                      var totalCostInput = document.getElementById("totalCost");
+                      var daysInput = document.getElementById("days");
+                  
+                      var roomCost = parseFloat(roomSelect.options[roomSelect.selectedIndex].dataset.cost) || 0;
+                      var spaCost = 0;
+                  
+                      if (spaSelect.value === "Tak") {
+                        spaCost = parseFloat(idSelect.options[idSelect.selectedIndex].dataset.cost) || 0;
+                      }
+                  
+                      var selectedDate1 = new Date(document.getElementById("selectedDate1").value);
+                      var selectedDate2 = new Date(document.getElementById("selectedDate2").value);
+                      var days = (selectedDate2 - selectedDate1) / (1000 * 60 * 60 * 24);
+                      daysInput.value = days;
+                  
+                      var totalCost = roomCost * days + spaCost;
+                      totalCostInput.value = totalCost.toFixed(2);
+                  
+                      sprawdzDostepnoscTerminu();
+                    }
+                  
+                    function toggleSpaOptions() {
+                      var spaSelect = document.getElementById("spa_name");
+                      var idSelect = document.getElementById("spa");
+                  
+                      if (spaSelect.value === "Tak") {
+                        idSelect.style.display = "block";
+                      } else {
+                        idSelect.style.display = "none";
+                      }
+                  
+                      calculateTotalCost();
+                    }
+                  
+                    $(function () {
+                      $("#datepicker1").datepicker({
+                        dateFormat: "yy-mm-dd",
+                        onSelect: function (dateText, inst) {
+                          $("#selectedDate1").val(dateText);
+                          calculateTotalCost();
+                        },
+                      });
+                  
+                      $("#datepicker2").datepicker({
+                        dateFormat: "yy-mm-dd",
+                        onSelect: function (dateText, inst) {
+                          $("#selectedDate2").val(dateText);
+                          calculateTotalCost();
+                        },
+                      });
+                  
+                      // Dodane zdarzenie onchange dla pól wyboru daty
+                      $("#selectedDate1").change(function () {
+                        calculateTotalCost();
+                        sprawdzDostepnoscTerminu();
+                      });
+                  
+                      $("#selectedDate2").change(function () {
+                        calculateTotalCost();
+                        sprawdzDostepnoscTerminu();
+                      });
+                  
+                      $("#form").submit(function (event) {
+                        const isFormValid = validateForm();
+                        if (!isFormValid) {
+                          event.preventDefault();
+                        }
+                      });
+                    });
+                  </script>
+                
+                </div>
+              </div>
+          </div> 
+      </section>
+      <script src="public/js/add_rezerwacja.js"></script>
+          <script src="js/rezerwacja.js"></script> 
+    </body>
+</html>
